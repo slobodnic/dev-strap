@@ -61,4 +61,11 @@ Function Install-WinGet {
     Write-Verbose "[$((Get-Date).TimeofDay)] Ending $($myinvocation.mycommand)"
 }
 
-Install-WinGet
+if (Get-Command "winget" -errorAction SilentlyContinue)
+{    
+    Write-Host -ForegroundColor Yellow "winget already exists... skipping" 
+} else {
+    Write-Host -ForegroundColor Green "Installing winget"
+
+    Install-WinGet
+}
