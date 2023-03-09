@@ -26,6 +26,7 @@ Expand-Archive scripts.zip -DestinationPath .
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
+& $scriptsPath\dev-strap-main\pre-requisites\winget.ps1
 & $scriptsPath\dev-strap-main\pre-requisites\dotnet-sdk.ps1
 & $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
 & $scriptsPath\dev-strap-main\pre-requisites\git.ps1
