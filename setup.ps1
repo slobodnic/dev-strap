@@ -15,6 +15,7 @@ if ((Test-Admin) -eq $false)  {
 }
 
 Write-Host -ForegroundColor Green "Downloading all required scripts..."
+$currentFolder = $PWD
 $scriptsPath = $env:TEMP + "\dev-strap"
 mkdir $scriptsPath
 Set-Location $scriptsPath
@@ -36,5 +37,7 @@ Get-ChildItem -Filter '*.ps1' $scriptsPath+'\dev-strap-main\scripts' | ForEach-O
   & $_.FullName
 }
 
+Set-Location $currentFolder
+Remove-Item $env:TEMP\dev-strap\ -Force -Recurse
 # stop-process -Id $PID
 # logoff.exe
