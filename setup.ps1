@@ -28,7 +28,8 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 
 & $scriptsPath\dev-strap-main\pre-requisites\dotnet-sdk.ps1
 & $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\git.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\nuget.ps1
 & $scriptsPath\dev-strap-main\pre-requisites\python.ps1
 
 Write-Host -ForegroundColor Green "Installing the tools" 
