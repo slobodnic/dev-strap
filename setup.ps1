@@ -17,7 +17,9 @@ if ((Test-Admin) -eq $false)  {
 Write-Host -ForegroundColor Green "Downloading all required scripts..."
 mkdir dev-strap
 Set-Location dev-strap
-Invoke-WebRequest -uri https://dev.azure.com/hrblock/0470b46e-1f42-4fdf-b4aa-9b392089b0bc/_apis/git/repositories/fbb861e6-ede1-4166-8373-068dd14278d7/items?path=/&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=master&resolveLfs=true&%24format=zip&api-version=5.0&download=true -OutFile scripts.zip
+Invoke-WebRequest -uri https://github.com/slobodnic/dev-strap/archive/refs/heads/main.zip -OutFile scripts.zip
+Expand-Archive scripts.zip -DestinationPath .
+Set-Location dev-strap-main
 
 'running with full privileges'
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
