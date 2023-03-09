@@ -12,5 +12,4 @@ if (Get-Command "code1" -errorAction SilentlyContinue)
     Invoke-WebRequest $SourceURL -OutFile $Installer;
     Start-Process -FilePath $Installer -Args "/verysilent /tasks=addcontextmenufiles,addcontextmenufolders,addtopath" -Wait; 
     Remove-Item $Installer;
-    Stop-Process -Name Explorer   
 }
