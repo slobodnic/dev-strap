@@ -15,7 +15,7 @@ if ((Test-Admin) -eq $false)  {
 }
 
 Write-Host -ForegroundColor Green "Downloading all required scripts..."
-$currentFolder = $PWD
+$currentFolder = $($PWD)
 $scriptsPath = $env:TEMP + "\dev-strap"
 New-Item -Path $scriptsPath | Out-Null
 Set-Location $scriptsPath
