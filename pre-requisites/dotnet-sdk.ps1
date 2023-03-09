@@ -1,4 +1,3 @@
-Param([string]$SDKVersion = "6")
-$SDKPackage = $("Microsoft.DotNet.SDK." + $SDKVersion)
+Param([string]$SDKVersion = "6.0")
 
-winget install $SDKPackage
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://dot.net/v1/dotnet-install.ps1')) -Chanel $SDKVersion
