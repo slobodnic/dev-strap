@@ -18,7 +18,7 @@ Write-Host -ForegroundColor Green "Downloading all required scripts..."
 $currentFolder = $($PWD)
 $scriptsPath = $env:TEMP + "\dev-strap"
 New-Item -Path $scriptsPath | Out-Null
-Set-Location $scriptsPath
+Set-Location $scriptsPath | Out-Null
 Invoke-WebRequest -uri https://github.com/slobodnic/dev-strap/archive/refs/heads/main.zip -OutFile scripts.zip
 Expand-Archive scripts.zip -DestinationPath .
 
