@@ -4,5 +4,5 @@ if (Get-Command "nuget" -errorAction SilentlyContinue)
 } else {
     Write-Host -ForegroundColor Green "Installing NuGet provider"
 
-    Install-PackageProvider -Name NuGet
+    choco install -y NuGet.CommandLine
 }
