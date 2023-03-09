@@ -15,8 +15,9 @@ if ((Test-Admin) -eq $false)  {
 }
 
 Write-Host -ForegroundColor Green "Downloading all required scripts..."
-mkdir dev-strap
-Set-Location dev-strap
+$scriptsPath = $env:TEMP + "\dev-strap"
+mkdir $scriptsPath
+Set-Location $scriptsPath
 Invoke-WebRequest -uri https://github.com/slobodnic/dev-strap/archive/refs/heads/main.zip -OutFile scripts.zip
 Expand-Archive scripts.zip -DestinationPath .
 
@@ -24,14 +25,14 @@ Expand-Archive scripts.zip -DestinationPath .
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
-.\dev-strap-main\pre-requisites\dotnet.ps1
-.\dev-strap-main\pre-requisites\chocolatey.ps1
-.\dev-strap-main\pre-requisites\chocolatey.ps1
-.\dev-strap-main\pre-requisites\python.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\dotnet.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
+& $scriptsPath\dev-strap-main\pre-requisites\python.ps1
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
-Get-ChildItem -Filter '*.ps1' '.\dev-strap-main\scripts' | ForEach-Object {
+Get-ChildItem -Filter '*.ps1' $scriptsPath+'\dev-strap-main\scripts' | ForEach-Object {
   & $_.FullName
 }
 
