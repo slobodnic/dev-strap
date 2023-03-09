@@ -17,6 +17,7 @@ if ((Test-Admin) -eq $false)  {
 Write-Host -ForegroundColor Green "Downloading all required scripts..."
 $currentFolder = $($PWD)
 $scriptsPath = $env:TEMP + "\dev-strap"
+$prerequisitesPath = $scriptsPath+ "\dev-strap-main\pre-requisites"
 New-Item -Path $scriptsPath -ItemType Directory | Out-Null
 Set-Location $scriptsPath
 Invoke-WebRequest -uri https://github.com/slobodnic/dev-strap/archive/refs/heads/main.zip -OutFile scripts.zip
@@ -26,12 +27,12 @@ Expand-Archive scripts.zip -DestinationPath .
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
-& $scriptsPath\dev-strap-main\pre-requisites\winget.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\dotnet-sdk.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\chocolatey.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\git.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\nuget.ps1
-& $scriptsPath\dev-strap-main\pre-requisites\python.ps1
+& $prerequisitesPath\winget.ps1
+& $prerequisitesPath\dotnet-sdk.ps1
+& $prerequisitesPath\chocolatey.ps1
+& $prerequisitesPath\git.ps1
+& $prerequisitesPath\nuget.ps1
+& $prerequisitesPath\python.ps1
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
