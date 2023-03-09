@@ -33,7 +33,7 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
-Get-ChildItem -Filter '*.ps1' $scriptsPath+'\dev-strap-main\scripts' | ForEach-Object {
+Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Object {
   & $_.FullName
 }
 
