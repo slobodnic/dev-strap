@@ -1,4 +1,4 @@
-Param([string]$SDKVersion = "6")
+Param([string]$SDKVersion = "6.0.14")
 $sdk = "Microsoft.DotNet.SDK.$SDKVersion"
 $runtime = "Microsoft.DotNet.Runtime.$SDKVersion"
 #Invoke-WebRequest -uri https://dot.net/v1/dotnet-install.ps1 -OutFile dotnet-install.ps1
@@ -13,12 +13,13 @@ if (Get-Command "dotnet" -errorAction SilentlyContinue)
 } else {
     Write-Host -ForegroundColor Green "Installing dotnet"
 
-    winget install $runtime --silent
+    # winget install $runtime --silent
+    choco install dotnet-6.0-runtime
 }
 
 if (dotnet --list-sdks | Select-String -pattern $SDKVersion -quiet) {
     Write-Host -ForegroundColor Yellow "dotnet SDK $SDKVersion already install... skipping" 
 } else {
     Write-Host -ForegroundColor Green "Installing dotnet SDK $SDKVersion"
-    winget install $sdk --silent
+    choco install dotnet-6.0-sdk
 }
