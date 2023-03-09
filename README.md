@@ -8,5 +8,9 @@ Script to bootsrap the installation of the tools needed for development
 2.	Software dependencies
 3.	Latest releases
 
+
+# Using the scripts
+execute `Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/slobodnic/dev-strap/main/setup.ps1'))`
+
 # Contribute
 Please add installation scripts for tools under the scripts folder
