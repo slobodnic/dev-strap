@@ -1,4 +1,4 @@
-import-module appx -usewindowspowershell
+import-module appx
 
 #this command will work in PowerShell 7.2 and later
 Function Install-WinGet {
