@@ -19,20 +19,19 @@ mkdir dev-strap
 Set-Location dev-strap
 Invoke-WebRequest -uri https://github.com/slobodnic/dev-strap/archive/refs/heads/main.zip -OutFile scripts.zip
 Expand-Archive scripts.zip -DestinationPath .
-Set-Location dev-strap-main
 
 'running with full privileges'
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
-.\pre-requisites\dotnet.ps1
-.\pre-requisites\chocolatey.ps1
-.\pre-requisites\chocolatey.ps1
-.\pre-requisites\python.ps1
+.\dev-strap-main\pre-requisites\dotnet.ps1
+.\dev-strap-main\pre-requisites\chocolatey.ps1
+.\dev-strap-main\pre-requisites\chocolatey.ps1
+.\dev-strap-main\pre-requisites\python.ps1
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
-Get-ChildItem -Filter '*.ps1' '.\scripts' | ForEach-Object {
+Get-ChildItem -Filter '*.ps1' '.\dev-strap-main\scripts' | ForEach-Object {
   & $_.FullName
 }
 
