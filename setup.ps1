@@ -29,7 +29,8 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 
 # & $prerequisitesPath\winget.ps1
 & $prerequisitesPath\chocolatey.ps1; 
-& $prerequisitesPath\dotnet-runtime.ps1; 
+& $prerequisitesPath\dotnet-runtime.ps1;
+refreshenv; 
 & $prerequisitesPath\dotnet-sdk.ps1;
 & $prerequisitesPath\git.ps1;
 & $prerequisitesPath\nuget.ps1;
