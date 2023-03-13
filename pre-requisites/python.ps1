@@ -4,7 +4,7 @@ if (Get-Command "pip" -errorAction SilentlyContinue)
 } else {
     Write-Host -ForegroundColor Green "Installing python"
 
-    choco inst python
+    choco install -y python
     refreshenv
     #del .\python-setup.exe
 }
