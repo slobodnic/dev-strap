@@ -1,6 +1,5 @@
 Param([string]$SDKVersion = "6.0.14")
-$dotnetCmd = "$env:ProgramFiles\dotnet\dotnet.exe --list-sdks"
-if ($dotnetCmd | Select-String -pattern $SDKVersion -quiet) {
+if (dotnet --list-sdks | Select-String -pattern $SDKVersion -quiet) {
     Write-Host -ForegroundColor Yellow "dotnet SDK $SDKVersion already install... skipping" 
 } else {
     Write-Host -ForegroundColor Green "Installing dotnet SDK $SDKVersion"
