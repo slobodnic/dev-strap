@@ -5,4 +5,5 @@ if ($dotnetCmd | Select-String -pattern $SDKVersion -quiet) {
 } else {
     Write-Host -ForegroundColor Green "Installing dotnet SDK $SDKVersion"
     choco install -y dotnet-6.0-sdk
+    refreshenv
 }

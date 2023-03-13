@@ -9,4 +9,5 @@ if (Get-Command "dotnet" -errorAction SilentlyContinue)
 
     # winget install $runtime --silent
     choco install -y dotnet-6.0-runtime
+    refreshenv
 }

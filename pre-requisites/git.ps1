@@ -5,4 +5,5 @@ if (Get-Command "git" -errorAction SilentlyContinue)
     Write-Host -ForegroundColor Green "Installing git"
 
     choco install -y git
+    refreshenv
 }
