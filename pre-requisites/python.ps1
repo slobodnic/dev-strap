@@ -12,3 +12,6 @@ if (Get-Command "pip" -errorAction SilentlyContinue)
 
 Write-Host -ForegroundColor Green "Upgrading pip" 
 python.exe -m pip install --upgrade pip
+refreshenv
+
+pip list
