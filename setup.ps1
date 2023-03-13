@@ -28,7 +28,11 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 # The pre-requisit scripts are in order in which they need to install
 
 # & $prerequisitesPath\winget.ps1
+Start-Process powershell -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
 & $prerequisitesPath\chocolatey.ps1
+& $prerequisitesPath\dotnet-runtime.ps1
+
+Start-Process powershell -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
 & $prerequisitesPath\dotnet-sdk.ps1
 & $prerequisitesPath\git.ps1
 & $prerequisitesPath\nuget.ps1
