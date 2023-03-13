@@ -28,24 +28,17 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 # The pre-requisit scripts are in order in which they need to install
 
 # & $prerequisitesPath\winget.ps1
-Start-Process powershell { `
-    & $prerequisitesPath\chocolatey.ps1; `
-    & $prerequisitesPath\dotnet-runtime.ps1; `
-}
-
-Start-Process powershell { `
-    & $prerequisitesPath\dotnet-sdk.ps1; `
-    & $prerequisitesPath\git.ps1; `
-    & $prerequisitesPath\nuget.ps1; `
-    & $prerequisitesPath\python.ps1; `
-}
+& $prerequisitesPath\chocolatey.ps1; 
+& $prerequisitesPath\dotnet-runtime.ps1; 
+& $prerequisitesPath\dotnet-sdk.ps1;
+& $prerequisitesPath\git.ps1;
+& $prerequisitesPath\nuget.ps1;
+& $prerequisitesPath\python.ps1;
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
-Start-Process powershell { `
-    Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Object {
-        & $_.FullName
-    }
+Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Object {
+    & $_.FullName
 }
 
 Set-Location $currentFolder
