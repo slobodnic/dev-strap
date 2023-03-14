@@ -1,4 +1,6 @@
-param([switch]$Elevated)
+Param([switch]$InstallOptional)
+
+#bool $Elevated = false;
 
 function Test-Admin {
     $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
@@ -6,11 +8,11 @@ function Test-Admin {
 }
 
 if ((Test-Admin) -eq $false)  {
-    if ($elevated) {
+#    if ($elevated) {
         # tried to elevate, did not work, aborting
-    } else {
-        Start-Process pwsh.exe -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))        
-    }
+#    } else {
+    Start-Process pwsh.exe -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))        
+#    }
     exit
 }
 
@@ -42,6 +44,15 @@ Write-Host -ForegroundColor Green "Installing the tools"
 
 Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Object {
     & $_.FullName
+}
+
+if ($InstallOptional)
+{
+    Write-Host -ForegroundColor Green "Installing optional tools" 
+
+    Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\optional' | ForEach-Object {
+        & $_.FullName
+    }
 }
 
 Set-Location $currentFolder
