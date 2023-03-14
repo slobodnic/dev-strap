@@ -15,6 +15,8 @@ if (Get-Command "code" -errorAction SilentlyContinue)
 
 Write-Host -ForegroundColor Green "Installing VSCode addons"
 
-foreach($plugin in Get-Content .\plugins.txt) {
-    code --install-extension $plugin
+if (Test-Path -Path .\plugins.txt -PathType Leaf) {
+    foreach($plugin in Get-Content .\plugins.txt) {
+        code --install-extension $plugin
+    }
 }
