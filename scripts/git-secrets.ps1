@@ -6,8 +6,9 @@ if (Get-Command "git-secrets" -errorAction SilentlyContinue)
 
    Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets -OutFile git-secrets
    Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets.1 -OutFile git-secrets.1
+   Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/install.ps1 -OutFile install.ps1
 
-   Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/awslabs/git-secrets/master/install.ps1'))
+   .\install.ps1
 
    del git-secrets*
 }
