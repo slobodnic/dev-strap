@@ -32,7 +32,11 @@ if ((Test-Admin) -eq $false)  {
     exit
 }
 
-$scriptsPath = Split-Path -parent $myinvocation.MyCommand.Path
+if ($myinvocation.MyCommand.Path) {
+    $scriptsPath = Split-Path -parent $myinvocation.MyCommand.Path
+} else {
+    $scriptsPath = $env:TEMP
+}
 $prerequisitesPath = Join-Path $scriptsPath -ChildPath pre-requisites
 
 if ($Online) {
