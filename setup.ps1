@@ -14,7 +14,7 @@ function Test-Admin {
 }
 
 $currentFolder = $PWD
-if (-not $Online && $myinvocation.MyCommand.Definition -contains "http") {
+if (-NOT $Online -AND $myinvocation.MyCommand.Definition -contains "http") {
     $Online = $true;
 }
 
