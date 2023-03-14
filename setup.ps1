@@ -11,7 +11,7 @@ if ((Test-Admin) -eq $false)  {
 #    if ($elevated) {
         # tried to elevate, did not work, aborting
 #    } else {
-    Start-Process pwsh.exe -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))        
+    Start-Process PowerShell.exe -WorkingDirectory $PWD -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))        
 #    }
     exit
 }
@@ -29,19 +29,21 @@ Expand-Archive scripts.zip -DestinationPath .
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
+Set-Location $prerequisitesPath
 # & $prerequisitesPath\winget.ps1
-& $prerequisitesPath\chocolatey.ps1; 
+& .\chocolatey.ps1; 
 $env:ChocolateyInstall = Convert-Path "$((Get-Command choco).Path)\..\.."   
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 refreshenv;
-& $prerequisitesPath\dotnet-runtime.ps1;
-& $prerequisitesPath\dotnet-sdk.ps1;
-& $prerequisitesPath\git.ps1;
-& $prerequisitesPath\nuget.ps1;
-& $prerequisitesPath\python.ps1;
+& .\dotnet-runtime.ps1;
+& .\dotnet-sdk.ps1;
+& .\git.ps1;
+& .\nuget.ps1;
+& .\python.ps1;
 
 Write-Host -ForegroundColor Green "Installing the tools" 
 
+Set-Location $scriptsPath'\dev-strap-main\scripts'
 Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Object {
     & $_.FullName
 }
@@ -49,7 +51,7 @@ Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\scripts' | ForEach-Ob
 if ($InstallOptional)
 {
     Write-Host -ForegroundColor Green "Installing optional tools" 
-
+    Set-Location $scriptsPath'\dev-strap-main\optional'
     Get-ChildItem -Filter '*.ps1' $scriptsPath'\dev-strap-main\optional' | ForEach-Object {
         & $_.FullName
     }
