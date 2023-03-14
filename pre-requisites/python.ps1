@@ -6,7 +6,6 @@ if (Get-Command "pip" -errorAction SilentlyContinue)
 
     choco install -y python
     refreshenv
-    #del .\python-setup.exe
 }
 
 Write-Host -ForegroundColor Green "Upgrading pip" 
