@@ -17,6 +17,8 @@ $currentFolder = $PWD
 if (-NOT $Online -AND $myinvocation.MyCommand.Definition -contains "http") {
     "Need to override online"
     $Online = $true;
+} else {
+    echo $myinvocation.MyCommand.Definition
 }
 
 if ((Test-Admin) -eq $false)  {
