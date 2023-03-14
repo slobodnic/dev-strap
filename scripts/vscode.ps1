@@ -20,9 +20,9 @@ if (Test-Path -Path .\plugins.txt -PathType Leaf) {
 
     foreach($plugin in Get-Content .\plugins.txt) {
         if ($existingPlugins -contains $plugin) {
-            Write-Host -ForegroundColor Yellow $plugin + " already installed. Skipping ..."
+            Write-Host -ForegroundColor Yellow $plugin" already installed. Skipping ..."
         } else {
-            Write-Host -ForegroundColor Green "Installing the following addons" + $plugin            
+            Write-Host -ForegroundColor Green "Installing the following addons: "$plugin
             code --install-extension $plugin
         }
     }
