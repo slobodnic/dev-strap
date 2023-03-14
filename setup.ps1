@@ -14,6 +14,7 @@ function Test-Admin {
 }
 
 $currentFolder = $PWD
+$myinvocation.MyCommand.Path 
 
 if ((Test-Admin) -eq $false)  {
     $cmd = $myinvocation.MyCommand.Path 
