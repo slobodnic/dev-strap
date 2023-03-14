@@ -16,10 +16,16 @@ if (Get-Command "code" -errorAction SilentlyContinue)
 Write-Host -ForegroundColor Green "Installing VSCode addons"
 
 if (Test-Path -Path .\plugins.txt -PathType Leaf) {
+    $existingPlugins = code --list-extensions;
+
     foreach($plugin in Get-Content .\plugins.txt) {
-        code --install-extension $plugin
+        if ($existingPlugins -contains $plugin) {
+            Write-Host -ForegroundColor Yellow $plugin + " already installed. Skipping ..."
+        } else {
+            Write-Host -ForegroundColor Green "Installing the following addons" + $plugin            
+            code --install-extension $plugin
+        }
     }
 } else {
-    pwd
     Write-Host -ForegroundColor Yellow "plugins.txt file does not exists"
 }
