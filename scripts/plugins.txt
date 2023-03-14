@@ -22,4 +22,4 @@ nickdemayo.vscode-json-editor
 oliversturm.fix-json
 redhat.vscode-yaml
 streetsidesoftware.code-spell-checker
-tomoyukim.vscode-mermaid-editor"
+tomoyukim.vscode-mermaid-editor
