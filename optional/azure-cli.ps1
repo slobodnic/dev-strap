@@ -6,4 +6,6 @@ if (Get-Command "az" -errorAction SilentlyContinue)
 
     choco install -y azure-cli
     refreshenv
+
+    az extension add --name azure-devops
 }
