@@ -4,11 +4,16 @@ if (Get-Command "git-secrets" -errorAction SilentlyContinue)
 } else {
     Write-Host -ForegroundColor Green "Installing git secrets"
 
-   Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets -OutFile git-secrets
-   Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets.1 -OutFile git-secrets.1
-   Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/install.ps1 -OutFile install.ps1
+    $binPath = ".\bin"
+    New-Item -Path $binPath -ItemType Directory | Out-Null
+    Set-Location $binPath
+
+    Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets -OutFile git-secrets
+    Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/git-secrets.1 -OutFile git-secrets.1
+    Invoke-WebRequest -uri https://raw.githubusercontent.com/awslabs/git-secrets/master/install.ps1 -OutFile install.ps1
 
    .\install.ps1
 
-   del git-secrets*
+   Set-Location ".."
+   Remove-Item $binPath -Force -Recurse
 }
