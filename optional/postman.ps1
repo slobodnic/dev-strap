@@ -1,4 +1,4 @@
-if (Get-Command "postman" -errorAction SilentlyContinue)
+if (choco list postman -l | Select-String -pattern "1 packages installed." -quiet)
 {    
     Write-Host -ForegroundColor Yellow "Postman already exists... skipping" 
 } else {

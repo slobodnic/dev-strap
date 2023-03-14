@@ -1,4 +1,4 @@
-if (Get-Command "lens" -errorAction SilentlyContinue)
+if (choco list lens -l | Select-String -pattern "1 packages installed." -quiet)
 {    
     Write-Host -ForegroundColor Yellow "Lens already exists... skipping" 
 } else {
