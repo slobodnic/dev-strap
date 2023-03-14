@@ -19,4 +19,7 @@ if (Test-Path -Path .\plugins.txt -PathType Leaf) {
     foreach($plugin in Get-Content .\plugins.txt) {
         code --install-extension $plugin
     }
+} else {
+    pwd
+    Write-Host -ForegroundColor Yellow "plugins.txt file does not exists"
 }
