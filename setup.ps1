@@ -17,8 +17,6 @@ $currentFolder = $PWD
 if (-NOT $Online -AND $myinvocation.MyCommand.Definition -like "*http*") {
     "Need to override online"
     $Online = $true;
-} else {
-    echo $myinvocation.MyCommand.Definition
 }
 
 if ((Test-Admin) -eq $false)  {
@@ -86,6 +84,9 @@ if ($InstallOptional)
         & $_.FullName
     }
 }
+
+Write-Host -ForegroundColor Green "Making sure all packages installed with chocolatey are the latest..." 
+choco upgrade all
 
 Set-Location $currentFolder
 if ($Online) {
