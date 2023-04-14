@@ -57,32 +57,15 @@ if ($Online) {
 Write-Host -ForegroundColor Green "Installing pre-requisites" 
 # The pre-requisit scripts are in order in which they need to install
 
-Set-Location $prerequisitesPath
-# & $prerequisitesPath\winget.ps1
-& .\chocolatey.ps1; 
-$env:ChocolateyInstall = Convert-Path "$((Get-Command choco).Path)\..\.."   
-Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
-refreshenv;
-& .\dotnet-runtime.ps1;
-& .\dotnet-sdk.ps1;
-& .\git.ps1;
-& .\nuget.ps1;
-& .\python.ps1;
+& .\install.ps1 $prerequisitesPath
 
 Write-Host -ForegroundColor Green "Installing the tools" 
-
-Set-Location $scriptsPath'\scripts'
-Get-ChildItem -Filter '*.ps1' $scriptsPath'\scripts' | ForEach-Object {
-    & $_.FullName
-}
+& .\install.ps1 $scriptsPath'\scripts'
 
 if ($InstallOptional)
 {
     Write-Host -ForegroundColor Green "Installing optional tools" 
-    Set-Location $scriptsPath'\optional'
-    Get-ChildItem -Filter '*.ps1' $scriptsPath'\optional' | ForEach-Object {
-        & $_.FullName
-    }
+    & .\install.ps1 $scriptsPath'\optional'
 }
 
 Write-Host -ForegroundColor Green "Making sure all packages installed with chocolatey are the latest..." 

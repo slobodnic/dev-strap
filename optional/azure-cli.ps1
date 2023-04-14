@@ -1,11 +1,1 @@
-if (Get-Command "az" -errorAction SilentlyContinue)
-{    
-    Write-Host -ForegroundColor Yellow "Azure cli already exists... skipping" 
-} else {
-    Write-Host -ForegroundColor Green "Installing Azure cli"
-
-    choco install -y azure-cli
-    refreshenv
-
-    az extension add --name azure-devops
-}
+az extension add --name azure-devops;

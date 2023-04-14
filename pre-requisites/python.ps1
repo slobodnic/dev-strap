@@ -1,4 +1,4 @@
-if (Get-Command "pip" -errorAction SilentlyContinue)
+<# if (Get-Command "pip" -errorAction SilentlyContinue)
 {    
     Write-Host -ForegroundColor Yellow "Python already exists... skipping" 
 } else {
@@ -7,7 +7,7 @@ if (Get-Command "pip" -errorAction SilentlyContinue)
     choco install -y python
     refreshenv
 }
-
+ #>
 Write-Host -ForegroundColor Green "Upgrading pip" 
 python.exe -m pip install --upgrade pip
 refreshenv

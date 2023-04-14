@@ -1,13 +1,3 @@
-if (Get-Command "code" -errorAction SilentlyContinue)
-{    
-    Write-Host -ForegroundColor Yellow "VSCode already exists... skipping" 
-} else {
-    Write-Host -ForegroundColor Green "Installing VSCode"
-
-    choco install -y vscode
-    refreshenv
-}
-
 Write-Host -ForegroundColor Green "Installing VSCode addons"
 
 if (Test-Path -Path .\vs-plugins.txt -PathType Leaf) {

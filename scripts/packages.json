@@ -1,0 +1,18 @@
+[
+    {
+        "name": "git-secrets",
+        "type": "script",
+        "script": "git-secrets.ps1"
+    },
+    {
+        "name": "jq"
+    },
+    {
+        "name": "pre-commit",
+        "type": "pip"
+    },
+    {
+        "name": "VSCode",
+        "postInstallScript": "vscode.ps1"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Chocolatey",
+        "type": "script",
+        "script": "chocolatey.ps1"
+    },
+    {
+        "name": "DotNet Runtime 6.0",
+        "package": "dotnet-6.0-runtime"
+    },
+    {
+        "name": "DotNet SDK 6.0",
+        "package": "dotnet-6.0-sdk"
+    },
+    {
+        "name": "Git"
+    },
+    {
+        "name": "NuGet",
+        "package": "NuGet.CommandLine"
+    },
+    {
+        "name": "Python",
+        "postInstallScript": "python.ps1"
+    }
+]
