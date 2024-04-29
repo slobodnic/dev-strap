@@ -1,4 +1,4 @@
-if (Get-Command "chocolatey" -errorAction SilentlyContinue)
+if (Get-Command "choco" -errorAction SilentlyContinue)
 {    
     Write-Host -ForegroundColor Yellow "Chocolatey already exists... skipping" 
 } else {

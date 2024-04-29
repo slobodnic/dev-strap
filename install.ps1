@@ -6,44 +6,44 @@ Param (
 
 Set-Location $Path
 if (Test-Path -Path .\packages.json -PathType Leaf) {
-    Get-Content packages.json | 
-    ConvertFrom-Json | 
-    ForEach-Object { 
-        $package = $_.package;
+    $json = Get-Content packages.json -Raw | ConvertFrom-Json;
+
+    ForEach ($p in $json) {
+    $package = $p.package;
         if ($package -eq $null) {
-            $package = $_.name;
+            $package = $p.name;
         }
 
-        $name = $_.name;
-        $version = $_.version;
-        $postInstallScript = $_.postInstallScript;
-        $type = $_.type;
+        $name = $p.name;
+        $version = $p.version;
+        $postInstallScript = $p.postInstallScript;
+        $type = $p.type;
 
         if ($type -eq "script") {
-            $script = $_.script;
+            Write-Host -ForegroundColor Green "Installing $name from script $p.script";
+            $script = $p.script;
             & .\$script;
         } elseif ($type -eq "pip") {
             if (pip show $package | Select-String -pattern "not found" -quiet) {
                 Write-Host -ForegroundColor Green "Installing $name"
                 pip install $package
             } else {
-                Write-Host -ForegroundColor Yellow "$name already install... skipping" 
+                Write-Host -ForegroundColor Yellow "$name already installed... skipping" 
             }
         }
         else {
-
-            if (choco find Git --local --by-id-only | Select-String -pattern "0 packages installed." -quiet) {
+            if (choco list $package --local --by-id-only | Select-String -pattern "0 packages installed." -quiet) {
                 if ($version -eq $null) {
                     Write-Host -ForegroundColor Green "Installing $name"
 
                     choco install -y $package
-                    refreshenv
+                    Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
                 }
                 else {
                     Write-Host -ForegroundColor Green "Installing $name version $version"
 
                     choco install -y $package --version $version
-                    refreshenv
+                    Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
                 }
 
                 if ($postInstallScript) {
@@ -52,7 +52,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
                 }    
             }
             else {    
-                Write-Host -ForegroundColor Yellow "$name already exists... skipping" 
+                Write-Host -ForegroundColor Yellow "$package already exists... skipping" 
             }
         }
     }

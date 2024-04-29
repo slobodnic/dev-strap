@@ -13,8 +13,11 @@
         "package": "kubernetes-helm"
     },
     {
-        "name": "KeePassXC"
+        "name": "KeePass"
     },
+    {
+        "name": "keepass-keepasshttp"
+    }
     {
         "name": "Kubernetes cli",
         "package": "kubernetes-cli"
@@ -29,10 +32,14 @@
         "name": "TotalCommander"
     },
     {
-        "name": "Wsl2"
+        "name": "Wsl2",
+        "postInstallScript": "wsl2.ps1"
     },
     {
         "name": "TruffleHog",
         "type": "pip"
+    },
+    {
+        "name": "microsoft-windows-terminal"
     }
 ]
