@@ -60,7 +60,7 @@ Write-Host -ForegroundColor Green "Installing pre-requisites"
 & .\install.ps1 $prerequisitesPath
 
 Write-Host -ForegroundColor Green "Installing the tools" 
-& .\install.ps1 $scriptsPath'\scripts'
+& .\install.ps1 $scriptsPath'\required'
 
 if ($InstallOptional)
 {

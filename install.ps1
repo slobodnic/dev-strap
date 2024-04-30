@@ -19,6 +19,19 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
         $postInstallScript = $p.postInstallScript;
         $type = $p.type;
 
+        # First, if there is a packages.config file, we will install the packages from there
+        if (Test-Path -Path .\packages.config -PathType Leaf) {
+            Write-Host -ForegroundColor Gray "Installing packages from packages.config"
+            choco install -y packages.config
+            Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
+        }
+
+         # Second, if there is a requirement.txt file, we will install the pip packages from there
+        if (Test-Path -Path .\requirements.txt -PathType Leaf) {
+            Write-Host -ForegroundColor Gray "Installing packages from requirements.txt"
+            pip install -r requirements.txt
+        }
+
         if ($type -eq "script") {
             Write-Host -ForegroundColor Gray "Executing script "$p.script;
             $script = $p.script;
