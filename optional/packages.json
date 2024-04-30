@@ -1,7 +1,47 @@
 [
     {
-        "name": "Azure DevOps cli",
-        "type": "script",
-        "script": "azure-cli.ps1"
+        "name": "Azure cli",
+        "package": "azure-cli",
+        "postInstallScript": "azure-cli.ps1"
+    },
+    {
+        "name": "Docker",
+        "package": "docker-desktop"
+    },
+    {
+        "name": "Helm",
+        "package": "kubernetes-helm"
+    },
+    {
+        "name": "KeePass"
+    },
+    {
+        "name": "keepass-keepasshttp"
+    },
+    {
+        "name": "Kubernetes cli",
+        "package": "kubernetes-cli"
+    },
+    {
+        "name": "Lens"
+    },
+    {
+        "name": "Postman"
+    },
+    {
+        "name": "TotalCommander"
+    },
+    {
+        "name": "Wsl2"
+    },
+    {
+        "name": "wsl-ubuntu-22.04"
+    },
+    {
+        "name": "TruffleHog",
+        "type": "pip"
+    },
+    {
+        "name": "microsoft-windows-terminal"
     }
 ]

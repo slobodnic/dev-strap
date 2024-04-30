@@ -1,12 +1,33 @@
 [
     {
+        "name": "jq"
+    },
+    {
+        "name": "VSCode"
+    },
+    {
         "name": "VSCode Extensions",
         "type": "script",
         "script": "vscode.ps1"
     },
     {
+        "name": "git"
+    },
+    {
+        "name": "DotNet Runtime 8.0",
+        "package": "dotnet-runtime-8.0"
+    },
+    {
+        "name": "DotNet SDK 8.0",
+        "package": "dotnet-sdk-8.0"
+    },    
+    {
         "name": "git-secrets",
         "type": "script",
         "script": "git-secrets.ps1"
+    },
+    {
+        "name": "NuGet",
+        "package": "NuGet.CommandLine"
     }
 ]
