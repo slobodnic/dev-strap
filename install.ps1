@@ -20,7 +20,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
         $type = $p.type;
 
         if ($type -eq "script") {
-            Write-Host -ForegroundColor Green "Installing $name from script $p.script";
+            Write-Host -ForegroundColor Gray "Executing script "$p.script;
             $script = $p.script;
             & .\$script;
         } elseif ($type -eq "pip") {
