@@ -24,11 +24,11 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
             $script = $p.script;
             & .\$script;
         } elseif ($type -eq "pip") {
-            if (pip show $package | Select-String -pattern "not found" -quiet) {
+            if (pip list | Select-String -pattern $package) {
+                Write-Host -ForegroundColor Yellow "$name already installed... skipping" 
+            } else {
                 Write-Host -ForegroundColor Green "Installing $name"
                 pip install $package
-            } else {
-                Write-Host -ForegroundColor Yellow "$name already installed... skipping" 
             }
         }
         else {
