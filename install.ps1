@@ -10,7 +10,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
 
     ForEach ($p in $json) {
     $package = $p.package;
-        if ($package -eq $null) {
+        if ($null -eq $package) {
             $package = $p.name;
         }
 
@@ -33,7 +33,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
         }
         else {
             if (choco list $package --local --by-id-only | Select-String -pattern "0 packages installed." -quiet) {
-                if ($version -eq $null) {
+                if ($null -eq $version) {
                     Write-Host -ForegroundColor Green "Installing $name"
 
                     choco install -y $package
