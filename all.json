@@ -8,30 +8,6 @@
       "scorePercent": 57,
       "scoringReviewer": "Guest",
       "scoringReviewDate": "2024-05-23T08:00:00Z",
-      "scoreSuccess": "partial",
-      "areaScores": [
-        {
-          "id": 2199,
-          "title": "Code",
-          "scorePercent": 90,
-          "scoreSuccess": "success",
-          "scoreEntries": [
-            {
-              "id": 2163,
-              "title": "Swagger",
-              "scoreSuccess": "unknown",
-              "isOptional": true,
-              "details": "..."
-            },
-            {
-              "id": 2153,
-              "title": "Application Insights",
-              "scorePercent": 80,
-              "scoreSuccess": ["AppInsights configured", "Dashboard present"],
-              "details": "Lorem ipsum for **AppInsights** sit amet, consectetuer adipiscing elit. Aliquam erat volutpat. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nullam at arcu a est sollicitudin euismod. Aliquam id dolor. Fusce nibh. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam sapien elit, consequat eget, tristique non, venenatis quis, ante. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Mauris elementum mauris vitae tortor. Maecenas libero. Duis pulvinar. Pellentesque pretium lectus id turpis. Duis ante orci, molestie vitae vehicula venenatis, tincidunt ac pede. Etiam commodo dui eget wisi. Nunc dapibus tortor vel mi dapibus sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Duis risus."
-            }
-          ]
-        }
-      ]
+      "scoreSuccess": "partial"
     }
   ]
