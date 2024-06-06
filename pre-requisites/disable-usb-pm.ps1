@@ -8,8 +8,8 @@ function Disable-USBPowerManagement ($hubs, $powerMgmt) {
                if ($IN -like "*$PNPDI*") {
                     if ($p.enable -eq $True) {
                          Write-Host -ForegroundColor Green "Disabling USB Power Management for $PNPDI -" $h.Description
-                         #$p.enable = $False
-                         #$p.psbase.put()
+                         $p.enable = $False
+                         $p.psbase.put()
                     }
                }
           }
