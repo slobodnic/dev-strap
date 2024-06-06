@@ -15,11 +15,11 @@
     },
     {
         "name": "DotNet Runtime 8.0",
-        "package": "dotnet-runtime-8.0"
+        "package": "dotnet-8.0-runtime"
     },
     {
         "name": "DotNet SDK 8.0",
-        "package": "dotnet-sdk-8.0"
+        "package": "dotnet-8.0-sdk"
     },    
     {
         "name": "git-secrets",
