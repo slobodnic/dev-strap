@@ -1,0 +1,3 @@
+[wsl2]
+memory=8GB # How much memory to assign to the WSL2 VM.
+processors=8 # How many processors to assign to the WSL2 VM.

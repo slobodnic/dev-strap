@@ -5,6 +5,16 @@
         "script": "chocolatey.ps1"
     },
     {
+        "name": "Disable sleep mode when computer is plugged in ...",
+        "type": "script",
+        "script": "disable-sleep.ps1"
+    },
+    {
+        "name": "Chocolatey",
+        "type": "script",
+        "script": "chocolatey.ps1"
+    },
+    {
         "name": "Python",
         "postInstallScript": "python.ps1"
     }

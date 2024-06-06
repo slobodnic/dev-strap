@@ -32,10 +32,13 @@
         "name": "TotalCommander"
     },
     {
-        "name": "Wsl2"
+        "name": "Wsl2",
+        "postInstallScript": "wsl/wsl.ps1"
     },
     {
-        "name": "wsl-ubuntu-22.04"
+        "name": "wsl-ubuntu-22.04",
+        "type": "script",
+        "script": "wsl/wsl-ubuntu-22.04.ps1"
     },
     {
         "name": "TruffleHog",
