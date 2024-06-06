@@ -24,6 +24,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
             Write-Host -ForegroundColor Gray "Installing packages from packages.config"
             choco install -y packages.config
             Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
+            refreshenv 
         }
 
          # Second, if there is a requirement.txt file, we will install the pip packages from there
@@ -45,18 +46,20 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
             }
         }
         else {
-            if (choco list $package --local --by-id-only | Select-String -pattern "0 packages installed." -quiet) {
+            if (choco list $package --by-id-only | Select-String -pattern "0 packages installed." -quiet) {
                 if ($null -eq $version) {
                     Write-Host -ForegroundColor Green "Installing $name"
 
                     choco install -y $package
                     Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
+                    refreshenv 
                 }
                 else {
                     Write-Host -ForegroundColor Green "Installing $name version $version"
 
                     choco install -y $package --version $version
                     Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
+		    refreshenv 
                 }
 
                 if ($postInstallScript) {
