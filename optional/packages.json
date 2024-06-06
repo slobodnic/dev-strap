@@ -36,7 +36,7 @@
         "postInstallScript": "wsl/wsl.ps1"
     },
     {
-        "name": "wsl-ubuntu-22.04",
+        "name": "Ubuntu - WSL",
         "type": "script",
         "script": "wsl/wsl-ubuntu-22.04.ps1"
     },
