@@ -171,6 +171,23 @@ run_dotfile_scripts() {
   fi
 }
 
+check_if_line_exists()
+{
+  log "Checking for: $LINE_TO_ADD"
+  # grep wont care if one or both files dont exist.
+  grep -qsFx "$LINE_TO_ADD" ~/.profile ~/.bash_profile ~/.bashrc
+}
+
+add_line_to_profile()
+{
+  profile=~/.bashrc
+  [ -w "$profile" ] || profile=~/.profile
+  [ -w "$profile" ] || profile=~/.bash_profile
+  log "Adding $LINE_TO_ADD to $profiles" 
+  printf "%s\n" "$LINE_TO_ADD" >> "$profile"
+  source $profile
+}
+
 [ "$USER" = "root" ] && abort "Run Strap as yourself, not root."
 
 if [ -z "$STRAP_CI" ]; then
@@ -242,7 +259,7 @@ logk
 # Setup Homebrew directory and permissions.
 logn "Installing Homebrew:"
 HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
-[ -n "$HOMEBREW_PREFIX" ] || HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+[ -n "$HOMEBREW_PREFIX" ] || HOMEBREW_PREFIX="/usr/local/linuxbrew"
 [ -d "$HOMEBREW_PREFIX" ] || sudo_askpass mkdir -p "$HOMEBREW_PREFIX"
 (
   cd "$HOMEBREW_PREFIX"
@@ -251,7 +268,7 @@ HOMEBREW_PREFIX="$(brew --prefix 2>/dev/null || true)"
 )
 
 HOMEBREW_REPOSITORY="$(brew --repository 2>/dev/null || true)"
-[ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
+[ -n "$HOMEBREW_REPOSITORY" ] || HOMEBREW_REPOSITORY="/usr/local/linuxbrew/Homebrew"
 [ -d "$HOMEBREW_REPOSITORY" ] || sudo_askpass mkdir -p "$HOMEBREW_REPOSITORY"
 sudo_askpass chown -R "$USER:$STRAP_SUDOER_GROUP" "$HOMEBREW_REPOSITORY"
 
@@ -271,7 +288,10 @@ unset GIT_DIR GIT_WORK_TREE
 logk
 
 # Update Homebrew.
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+export PATH=$PATH:${HOMEBREW_PREFIX}/bin
+LINE_TO_ADD="export PATH=\$PATH:${HOMEBREW_PREFIX}/bin"
+check_if_line_exists || add_line_to_profile
+
 log "Updating Homebrew:"
 brew update $Q
 logk
@@ -370,7 +390,7 @@ fi
 # Setup dotfiles
 if [ -n "$STRAP_GITHUB_USER" ]; then
   DOTFILES_URL="git+ssh://git@github.com/$STRAP_GITHUB_USER/dotfiles"
-  if git ls-remote "$DOTFILES_URL" &>/dev/null; then
+  if ! git ls-remote "$DOTFILES_URL" &>/dev/null; then
     DOTFILES_URL="https://github.com/$STRAP_GITHUB_USER/dotfiles"
   fi
 
@@ -393,7 +413,7 @@ fi
 # Setup Brewfile
 if [ -n "$STRAP_GITHUB_USER" ] && { [ ! -f "$HOME/.Brewfile" ] || [ "$HOME/.Brewfile" -ef "$HOME/.homebrew-brewfile/Brewfile" ]; }; then
   HOMEBREW_BREWFILE_URL="git+ssh://git@github.com/$STRAP_GITHUB_USER/homebrew-brewfile"
-  if git ls-remote "$HOMEBREW_BREWFILE_URL" &>/dev/null; then
+  if ! git ls-remote "$HOMEBREW_BREWFILE_URL" &>/dev/null; then
     HOMEBREW_BREWFILE_URL="https://github.com/$STRAP_GITHUB_USER/homebrew-brewfile"
   fi
 
