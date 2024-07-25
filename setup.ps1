@@ -28,9 +28,10 @@ if ((Test-Admin) -eq $false)  {
         $cmd += " -Online"
     }
 
-    Start-Process PowerShell.exe -WorkingDirectory $PWD -Verb RunAs -ArgumentList `
-        ('-noprofile -noexit -Command ' + $cmd)
-    exit
+    $cmd = 'cd ' + $PWD +';' +$cmd;
+
+    Start-Process PowerShell.exe -WorkingDirectory $currentFolder -Verb RunAs -ArgumentList `
+        '-noprofile', '-noexit', '-Command ', $cmd
 }
 
 if ($myinvocation.MyCommand.Path) {
