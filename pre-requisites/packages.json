@@ -16,6 +16,7 @@
     },
     {
         "name": "Python",
-        "postInstallScript": "python.ps1"
+        "type": "script",
+        "script": "python.ps1"
     }
 ]
