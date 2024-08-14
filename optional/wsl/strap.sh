@@ -270,8 +270,11 @@ git reset $Q --hard origin/master
 unset GIT_DIR GIT_WORK_TREE
 logk
 
+# Add Homebrew to Path
+grep -qxF "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" ~/.profile || echo "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" >> ~/.profile
+source ~/.profile
+
 # Update Homebrew.
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 log "Updating Homebrew:"
 brew update $Q
 logk
@@ -385,6 +388,7 @@ if [ -n "$STRAP_GITHUB_USER" ]; then
         git pull $Q --rebase --autostash
       )
     fi
+    chmod +x ~/.dotfiles/script/*
     run_dotfile_scripts script/setup script/bootstrap
     logk
   fi
