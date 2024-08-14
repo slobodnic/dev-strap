@@ -288,17 +288,14 @@ unset GIT_DIR GIT_WORK_TREE
 logk
 
 # Add Homebrew to Path
-grep -qxF "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" ~/.profile || echo "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" >> ~/.profile
-source ~/.profile
+# grep -qxF "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" ~/.profile || echo "PATH=\"${HOMEBREW_PREFIX}/bin:\$PATH\"" >> ~/.profile
+# source ~/.profile
 
 # Update Homebrew.
-<<<<<<< HEAD
-=======
 export PATH=$PATH:${HOMEBREW_PREFIX}/bin
 LINE_TO_ADD="export PATH=\$PATH:${HOMEBREW_PREFIX}/bin"
 check_if_line_exists || add_line_to_profile
 
->>>>>>> 32e9ad2318a612bdd38872a1b32f26103bfd39a5
 log "Updating Homebrew:"
 brew update $Q
 logk
