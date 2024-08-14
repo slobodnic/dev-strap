@@ -1,1 +1,1 @@
-Copy-Item .wslconfig $env:UserProfile\.wslconfig
+Copy-Item wsl/.wslconfig $env:UserProfile\.wslconfig

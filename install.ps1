@@ -59,7 +59,7 @@ if (Test-Path -Path .\packages.json -PathType Leaf) {
 
                     choco install -y $package --version $version
                     Import-Module "$env:ChocolateyInstall\helpers\chocolateyInstaller.psm1"
-		    refreshenv 
+		            refreshenv 
                 }
 
                 if ($postInstallScript) {

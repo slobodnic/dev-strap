@@ -13,10 +13,7 @@
         "package": "kubernetes-helm"
     },
     {
-        "name": "KeePass"
-    },
-    {
-        "name": "keepass-keepasshttp"
+        "name": "KeePassXC"
     },
     {
         "name": "Kubernetes cli",
@@ -38,7 +35,7 @@
     {
         "name": "Ubuntu - WSL",
         "type": "script",
-        "script": "wsl/wsl-ubuntu-22.04.ps1"
+        "script": "wsl/wsl-ubuntu.ps1"
     },
     {
         "name": "TruffleHog",
