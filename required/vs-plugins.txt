@@ -46,5 +46,6 @@ oliversturm.fix-json
 redhat.vscode-yaml
 shd101wyy.markdown-preview-enhanced
 streetsidesoftware.code-spell-checker
+tlevesque2.duplicate-finder
 tomoyukim.vscode-mermaid-editor
 ukoloff.win-ca
