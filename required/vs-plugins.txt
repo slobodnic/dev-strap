@@ -2,8 +2,11 @@ angular.ng-template
 bierner.markdown-mermaid
 ccimage.jsonviewer
 dagra.jsonschemautils
+davidanson.vscode-markdownlint
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
+donjayamanne.githistory
+eamodio.gitlens
 github.copilot
 github.copilot-chat
 github.vscode-pull-request-github
@@ -12,6 +15,7 @@ hediet.vscode-drawio
 marcoq.vscode-typescript-to-json-schema
 markis.code-coverage
 meezilla.json
+metatype.copilot-vscode
 mindaro-dev.file-downloader
 mindaro.mindaro
 mohsen1.prettify-json
@@ -20,7 +24,9 @@ ms-azuretools.vscode-azureresourcegroups
 ms-azuretools.vscode-docker
 ms-dotnettools.csdevkit
 ms-dotnettools.csharp
+ms-dotnettools.vscode-dotnet-pack
 ms-dotnettools.vscode-dotnet-runtime
+ms-dotnettools.vscodeintellicode-csharp
 ms-kubernetes-tools.vscode-kubernetes-tools
 ms-python.debugpy
 ms-python.python
@@ -34,6 +40,7 @@ ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-wsl
 ms-vscode.azurecli
 ms-vscode.powershell
+msjsdiag.vscode-react-native
 nickdemayo.vscode-json-editor
 oliversturm.fix-json
 redhat.vscode-yaml
